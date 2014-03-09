@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -106,7 +108,11 @@ var svg = d3.select("#graph-container").append("svg")
     .attr("width", width)
     .attr("height", height);
 
-d3.json("getGraph.jsp", function(error, graph) {
+
+var graphId = <%=request.getParameter("id")%>;
+
+d3.json("getGraph.jsp?graphId="+graphId, function(error, graph) {
+	
   force
       .nodes(graph.nodes)
       .links(graph.links)
@@ -114,13 +120,13 @@ d3.json("getGraph.jsp", function(error, graph) {
 
   var link = svg.selectAll(".link")
       .data(graph.links)
-    .enter().append("line")
+      .enter().append("line")
       .attr("class", "link")
       .style("stroke-width", function(d) { return Math.sqrt(d.value); });
 
   var node = svg.selectAll(".node")
       .data(graph.nodes)
-    .enter().append("circle")
+      .enter().append("circle")
       .attr("class", "node")
       .attr("r", 5)
       .style("fill", function(d) { return color(d.group); })

@@ -1,37 +1,77 @@
 package com.fdl.entity;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
+@Entity
+@Table(name="graph")
 public class Graph {
 
-	private List<Node> nodes = new ArrayList<Node>();  
-	private List<Link> links = new ArrayList<Link>();
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	@Cascade({CascadeType.ALL})	
+	@JoinTable(name = "graph_has_node", 
+		joinColumns = {@JoinColumn(name = "graph_id") }, 
+		inverseJoinColumns = {@JoinColumn(name = "node_id") }
+	)
+	private Set<Node> nodes; 
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	@Cascade({CascadeType.ALL})
+	@JoinTable(name = "graph_has_link", 
+		joinColumns = {@JoinColumn(name = "graph_id") }, 
+		inverseJoinColumns = {@JoinColumn(name = "link_id") 
+	})
+	private Set<Link> links;
 	
 	
 	public Graph() {}
 	
-	public Graph(List<Node> nodes, List<Link> links) {
+	public Graph(Set<Node> nodes, Set<Link> links) {
 		super();
 		this.nodes = nodes;
 		this.links = links;
 	}
+	
+	public Integer getId() {
+		return id;
+	}
 
-	public List<Node> getNodes() {
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Set<Node> getNodes() {
 		return nodes;
 	}
 
-	public void setNodes(List<Node> nodes) {
+	public void setNodes(Set<Node> nodes) {
 		this.nodes = nodes;
 	}
 
-	public List<Link> getLinks() {
+	public Set<Link> getLinks() {
 		return links;
 	}
-	public void setLinks(List<Link> links) {
+
+	public void setLinks(Set<Link> links) {
 		this.links = links;
 	}  
-
 	
 	
 }

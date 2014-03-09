@@ -1,16 +1,24 @@
 package com.fdl.entity;
 
+import java.util.Set;
+
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 
 
 @Entity
 @Table(name="node")
+@Embeddable
 public class Node {
 
 	@Id
@@ -23,6 +31,12 @@ public class Node {
 	@Column(name = "groups")
 	private Integer group;
 	
+	@ManyToOne(fetch = FetchType.EAGER)
+	NodeDescription nodeDescription;
+
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "nodes")
+	@OrderBy("id")
+	private Set<Graph> graph;
 	
 	public Node() {}
 	
@@ -50,6 +64,23 @@ public class Node {
 		this.group = group;
 	}
 
+	public NodeDescription getNodeDescription() {
+		return nodeDescription;
+	}
+
+	public void setNodeDescription(NodeDescription nodeDescription) {
+		this.nodeDescription = nodeDescription;
+	}
+
+	public Set<Graph> getGraph() {
+		return graph;
+	}
+
+	public void setGraph(Set<Graph> graph) {
+		this.graph = graph;
+	}
+
+	
 	
 	
 }

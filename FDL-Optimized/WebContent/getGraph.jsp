@@ -14,6 +14,7 @@
 	Gson gson = new Gson();
 
 	String applicationContextPath = application.getRealPath("/")+"applicationContext.xml";
+
 	//out.print(applicationContextPath);
   	ApplicationContext context = new FileSystemXmlApplicationContext(applicationContextPath);
 	FdlDao fdlDao=(FdlDao) context.getBean("fdlDao");

@@ -1,15 +1,22 @@
 package com.fdl.entity;
 
+import java.util.Set;
+
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name="link")
+@Embeddable
 public class Link {
 
 	@Id
@@ -24,6 +31,10 @@ public class Link {
 	
 	@Column
 	private Integer value;
+	
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "links")
+	@OrderBy("id")
+	private Set<Graph> graph;
 	
 	
 	
@@ -58,6 +69,14 @@ public class Link {
 	}
 	public void setValue(Integer value) {
 		this.value = value;
+	}
+
+	public Set<Graph> getGraph() {
+		return graph;
+	}
+
+	public void setGraph(Set<Graph> graph) {
+		this.graph = graph;
 	}
 	
 	
