@@ -16,17 +16,37 @@ public class NodeDescription {
 	private Integer id;
 	
 	@Column
-	private String desc1;
+	private String author;
 
 	@Column
-	private String desc2;
+	private String organism;
 	
 	
 	@Column
-	private String desc3;
+	private String country;
 
 	@Column
-	private String desc4;
+	private String subjPrime;
+	
+	@Column
+	private String keywords;
+
+	public NodeDescription() {
+		super();
+		
+	}
+
+	public NodeDescription(String author, String organism, String country,
+			String subjPrime, String keywords) {
+		super();
+		this.author = author;
+		this.organism = organism;
+		this.country = country;
+		this.subjPrime = subjPrime;
+		this.keywords = keywords;
+	}
+
+
 
 	public Integer getId() {
 		return id;
@@ -36,41 +56,44 @@ public class NodeDescription {
 		this.id = id;
 	}
 
-	public String getDesc1() {
-		return desc1;
+	public String getAuthor() {
+		return author;
 	}
 
-	public void setDesc1(String desc1) {
-		this.desc1 = desc1;
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 
-	public String getDesc2() {
-		return desc2;
+	public String getOrganism() {
+		return organism;
 	}
 
-	public void setDesc2(String desc2) {
-		this.desc2 = desc2;
+	public void setOrganism(String organism) {
+		this.organism = organism;
 	}
 
-	public String getDesc3() {
-		return desc3;
+	public String getCountry() {
+		return country;
 	}
 
-	public void setDesc3(String desc3) {
-		this.desc3 = desc3;
+	public void setCountry(String country) {
+		this.country = country;
 	}
 
-	public String getDesc4() {
-		return desc4;
+	public String getSubjPrime() {
+		return subjPrime;
 	}
 
-	public void setDesc4(String desc4) {
-		this.desc4 = desc4;
+	public void setSubjPrime(String subjPrime) {
+		this.subjPrime = subjPrime;
 	}
-	
-	
-	
-	
-	
+
+	public String getKeywords() {
+		return keywords;
+	}
+
+	public void setKeywords(String keywords) {
+		this.keywords = keywords;
+	}
 
 }
