@@ -55,7 +55,7 @@
 			<value>root</value>
 		</property>
 		<property name="password">
-			<value>pass</value>	
+			<value>root</value>	
 		</property>
 		
 	</bean>

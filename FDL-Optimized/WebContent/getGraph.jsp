@@ -13,7 +13,7 @@
 	response.setContentType("application/json;charset=UTF-8");
 	Gson gson = new Gson();
 
-	String applicationContextPath = application.getRealPath("/")+"applicationContext.xml";
+	String applicationContextPath = "/"+application.getRealPath("/")+"applicationContext.xml";
 
 	//out.print(applicationContextPath);
   	ApplicationContext context = new FileSystemXmlApplicationContext(applicationContextPath);
