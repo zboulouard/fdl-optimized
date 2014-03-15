@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
@@ -21,7 +22,7 @@ public class Link {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer Id;
+	private Integer id;
 	
 	@Column
 	private Integer source;
@@ -29,8 +30,9 @@ public class Link {
 	@Column
 	private Integer target;
 	
-	@Column
-	private Integer value;
+	@ManyToOne(fetch = FetchType.EAGER)
+	LinkDescription value;
+	
 	
 	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "links")
 	@OrderBy("id")
@@ -40,18 +42,21 @@ public class Link {
 	
 	public Link() {}
 	
-	public Link(Integer source, Integer target, Integer value) {
+	public Link(Integer source, Integer target) {
 		super();
 		this.source = source;
 		this.target = target;
-		this.value = value;
 	}
+
+
 	public Integer getId() {
-		return Id;
+		return id;
 	}
+
 	public void setId(Integer id) {
-		Id = id;
+		this.id = id;
 	}
+
 	public Integer getSource() {
 		return source;
 	}
@@ -64,12 +69,11 @@ public class Link {
 	public void setTarget(Integer target) {
 		this.target = target;
 	}
-	public Integer getValue() {
-		return value;
-	}
-	public void setValue(Integer value) {
-		this.value = value;
-	}
+
+
+
+
+
 
 	public Set<Graph> getGraph() {
 		return graph;

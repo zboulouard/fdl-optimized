@@ -2,6 +2,7 @@ package com.fdl.entity;
 
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -23,6 +24,9 @@ public class Graph {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@Column
+	private String name;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@Cascade({CascadeType.ALL})	
@@ -71,7 +75,17 @@ public class Graph {
 
 	public void setLinks(Set<Link> links) {
 		this.links = links;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}  
+	
+	
 	
 	
 }
