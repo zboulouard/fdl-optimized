@@ -22,6 +22,12 @@
 		</property>
 	</bean>
 
+
+	<bean id="servlet1" class="com.fdl.servlets.Servlet1">
+		<property name="fdlDao" ref="fdlDao"></property>
+	</bean>
+	
+	
 	<bean id="fdlDao" class="com.fdl.dao.FdlDao">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
@@ -64,6 +70,7 @@
 	<context:annotation-config />
 
 	<!-- Packages scan des beans -->
-	<context:component-scan base-package="com.fdl.dao.FdlDao" />
+	<context:component-scan base-package="com.fdl.dao" />
+	<context:component-scan base-package="com.fdl.servlets" />
 
 </beans>

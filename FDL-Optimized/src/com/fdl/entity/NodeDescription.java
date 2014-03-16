@@ -24,12 +24,7 @@ public class NodeDescription {
 	
 	@Column
 	private String country;
-
-	@Column
-	private String subjPrime;
 	
-	@Column
-	private String keywords;
 
 	public NodeDescription() {
 		super();
@@ -42,8 +37,6 @@ public class NodeDescription {
 		this.author = author;
 		this.organism = organism;
 		this.country = country;
-		this.subjPrime = subjPrime;
-		this.keywords = keywords;
 	}
 
 
@@ -78,22 +71,6 @@ public class NodeDescription {
 
 	public void setCountry(String country) {
 		this.country = country;
-	}
-
-	public String getSubjPrime() {
-		return subjPrime;
-	}
-
-	public void setSubjPrime(String subjPrime) {
-		this.subjPrime = subjPrime;
-	}
-
-	public String getKeywords() {
-		return keywords;
-	}
-
-	public void setKeywords(String keywords) {
-		this.keywords = keywords;
 	}
 
 }
