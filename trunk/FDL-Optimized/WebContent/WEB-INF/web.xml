@@ -23,7 +23,24 @@
 	</servlet>
  
 	<servlet-mapping>
-    	<servlet-name>doExtraction</servlet-name>
+    	<servlet-name>getGraph</servlet-name>
     	<url-pattern>/doExtraction</url-pattern>
 	</servlet-mapping>
+	
+	
+	
+	
+	    <servlet>
+    <display-name>getGraph</display-name>
+    <servlet-name>getGraph</servlet-name>
+    <servlet-class>
+        org.springframework.web.context.support.HttpRequestHandlerServlet
+    </servlet-class>
+	</servlet>
+ 
+	<servlet-mapping>
+    	<servlet-name>getGraph</servlet-name>
+    	<url-pattern>/getGraph</url-pattern>
+	</servlet-mapping>
+	
 </web-app>

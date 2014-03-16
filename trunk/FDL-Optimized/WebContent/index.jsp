@@ -111,7 +111,7 @@ var svg = d3.select("#graph-container").append("svg")
 
 var graphId = <%=request.getParameter("id")%>;
 
-d3.json("getGraph.jsp?graphId="+graphId, function(error, graph) {
+d3.json("getGraph?graphId="+graphId, function(error, graph) {
 	
   force
       .nodes(graph.nodes)
