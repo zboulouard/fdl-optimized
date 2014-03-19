@@ -13,9 +13,7 @@
 
 		<mapping class="com.fdl.entity.Link" />
 		<mapping class="com.fdl.entity.Node" />
-		<mapping class="com.fdl.entity.NodeDescription" />
 		<mapping class="com.fdl.entity.Graph" />
-		<mapping class="com.fdl.entity.LinkDescription" />
 	
 	</session-factory>
 </hibernate-configuration>

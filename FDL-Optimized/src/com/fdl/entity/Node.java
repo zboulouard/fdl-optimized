@@ -22,7 +22,7 @@ import javax.persistence.Table;
 public class Node {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
 	@Column
@@ -31,9 +31,13 @@ public class Node {
 	@Column(name = "groups")
 	private Integer group;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	NodeDescription nodeDescription;
+	@Column
+	private Integer organisme;
 
+	@Column
+	private Integer country;
+	
+	
 	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "nodes")
 	@OrderBy("id")
 	private Set<Graph> graph;
@@ -64,20 +68,28 @@ public class Node {
 		this.group = group;
 	}
 
-	public NodeDescription getNodeDescription() {
-		return nodeDescription;
-	}
-
-	public void setNodeDescription(NodeDescription nodeDescription) {
-		this.nodeDescription = nodeDescription;
-	}
-
 	public Set<Graph> getGraph() {
 		return graph;
 	}
 
 	public void setGraph(Set<Graph> graph) {
 		this.graph = graph;
+	}
+
+	public Integer getOrganisme() {
+		return organisme;
+	}
+
+	public void setOrganisme(Integer organisme) {
+		this.organisme = organisme;
+	}
+
+	public Integer getCountry() {
+		return country;
+	}
+
+	public void setCountry(Integer country) {
+		this.country = country;
 	}
 
 	

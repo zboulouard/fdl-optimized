@@ -23,7 +23,7 @@
 	</servlet>
  
 	<servlet-mapping>
-    	<servlet-name>getGraph</servlet-name>
+    	<servlet-name>doExtraction</servlet-name>
     	<url-pattern>/doExtraction</url-pattern>
 	</servlet-mapping>
 	
