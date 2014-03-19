@@ -19,7 +19,7 @@
     <link href="css/sticky-footer-navbar.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
-    <script src="d3.min.js"></script>
+    <script src="d3.v3.js"></script>
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->

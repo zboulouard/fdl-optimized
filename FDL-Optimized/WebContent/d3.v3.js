@@ -6155,16 +6155,16 @@
           s.y += y * k;
         }
       }
-      if (k = alpha * gravity) {
-        x = size[0] / 2;
-        y = size[1] / 2;
-        i = -1;
-        if (k) while (++i < n) {
-          o = nodes[i];
-          o.x += (x - o.x) * k;
-          o.y += (y - o.y) * k;
-        }
-      }
+//      if (k = alpha * gravity) {
+//        x = size[0] / 2;
+//        y = size[1] / 2;
+//        i = -1;
+//        if (k) while (++i < n) {
+//          o = nodes[i];
+//          o.x += (x - o.x) * k;
+//          o.y += (y - o.y) * k;
+//        }
+//      }
       if (charge) {
         d3_layout_forceAccumulate(q = d3.geom.quadtree(nodes), alpha, charges);
         i = -1;
@@ -6258,13 +6258,30 @@
     force.start = function() {
       var i, n = nodes.length, m = links.length, w = size[0], h = size[1], neighbors, o;
       for (i = 0; i < n; ++i) {
-        (o = nodes[i]).index = i;
-        o.weight = 0;
+        (o = nodes[i]).index = nodes[i].id;
+        o.weight = 0;        
       }
+      
       for (i = 0; i < m; ++i) {
         o = links[i];
-        if (typeof o.source == "number") o.source = nodes[o.source];
-        if (typeof o.target == "number") o.target = nodes[o.target];
+        if (typeof o.source == "number"){ 
+            for(iii=0;iii<nodes.length;iii++){
+            	if(nodes[iii].id == o.source){
+            		o.source = nodes[iii];
+
+            	}
+            		
+            }
+        }
+        if (typeof o.target == "number"){ 
+            for(jjj=0;jjj<nodes.length;jjj++){
+            	if(nodes[jjj].id == o.target){
+            		o.target = nodes[jjj];
+            	}
+            		
+            }
+
+        }
         ++o.source.weight;
         ++o.target.weight;
       }
