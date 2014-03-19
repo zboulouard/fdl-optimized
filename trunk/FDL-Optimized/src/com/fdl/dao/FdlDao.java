@@ -129,16 +129,27 @@ public class FdlDao extends HibernateDaoSupport{
 					 * Boucler sur la combinason des auteurs
 					 * qui esiste dàjà dans la variable listOfNodesWithIds
 					 * */
-					Link article = new Link();
-					System.out.println("Article  : "+title);
 					/*Debut */
-					article.setSource(listOfNodesWithIds.get(0).getId()-1);					
-					article.setTarget(listOfNodesWithIds.get(1).getId()-1);
-					article.setTitle(title);
-					List list = getHibernateTemplate().find("FROM Link WHERE title = '"+title+"'");
-					if(list.size() == 0 ){
-						getHibernateTemplate().save(article);								
+					
+					int item, item2;
+
+					for (int i=0; i<listOfNodesWithIds.size(); i++) {
+						   item = listOfNodesWithIds.get(i).getId();
+						   for(int j=i+1; j<listOfNodesWithIds.size(); j++) {
+								Link article = new Link();
+								System.out.println("Article  : "+title);
+							   item2 = listOfNodesWithIds.get(j).getId();
+							   System.out.println(item + ", " + item2);
+								article.setSource(item-1);					
+								article.setTarget(item2-1);
+								article.setTitle(title);
+								List list = getHibernateTemplate().find("FROM Link WHERE title = '"+title+"' AND source = '"+(item-1)+"'"+" AND target = '"+(item2-1)+"'");
+								if(list.size() == 0 ){
+									getHibernateTemplate().save(article);								
+								}
+						   }
 					}
+
 					
 					
 					transaction.commit();
