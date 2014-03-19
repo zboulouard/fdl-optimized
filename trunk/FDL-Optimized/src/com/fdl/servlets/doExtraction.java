@@ -1,6 +1,7 @@
 package com.fdl.servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,6 +32,7 @@ public class doExtraction implements HttpRequestHandler {
 	@Override
 	public void handleRequest(HttpServletRequest arg0, HttpServletResponse arg1)
 			throws ServletException, IOException {
+		PrintWriter out = arg1.getWriter();
 		// TODO Auto-generated method stub
 		fdlDao.addGraph();		
 	}

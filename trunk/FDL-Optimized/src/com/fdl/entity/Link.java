@@ -21,7 +21,7 @@ import javax.persistence.Table;
 public class Link {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
 	@Column
@@ -30,8 +30,9 @@ public class Link {
 	@Column
 	private Integer target;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	LinkDescription value;
+	@Column
+	private String title;
+
 	
 	
 	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "links")
@@ -74,6 +75,14 @@ public class Link {
 
 
 
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
 	public Set<Graph> getGraph() {
 		return graph;
