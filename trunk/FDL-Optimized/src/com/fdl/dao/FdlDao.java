@@ -140,10 +140,10 @@ public class FdlDao extends HibernateDaoSupport{
 								System.out.println("Article  : "+title);
 							   item2 = listOfNodesWithIds.get(j).getId();
 							   System.out.println(item + ", " + item2);
-								article.setSource(item-1);					
-								article.setTarget(item2-1);
+								article.setSource(item);					
+								article.setTarget(item2);
 								article.setTitle(title);
-								List list = getHibernateTemplate().find("FROM Link WHERE title = '"+title+"' AND source = '"+(item-1)+"'"+" AND target = '"+(item2-1)+"'");
+								List list = getHibernateTemplate().find("FROM Link WHERE title = '"+title+"' AND source = '"+(item)+"'"+" AND target = '"+(item2)+"'");
 								if(list.size() == 0 ){
 									getHibernateTemplate().save(article);								
 								}
