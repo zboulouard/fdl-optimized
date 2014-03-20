@@ -52,7 +52,9 @@ public class FdlDao extends HibernateDaoSupport{
 			
 			fileNumber++;
 			
-			
+			/*
+			 * La liste qui contien les noms des auteurs
+			 * */
 			List<String> authorsList = new ArrayList<String>();
 			
 			System.out.println("############### File #"+fileNumber+" ################");
@@ -121,9 +123,10 @@ public class FdlDao extends HibernateDaoSupport{
 					Query query = 
 							session.createQuery("from Node n where n.name in (:authorNames)")
 							.setParameterList("authorNames", authorsList);
+					/*Recuperer les Auteurs avec les IDs*/
 					List<com.fdl.entity.Node> listOfNodesWithIds = query.list();
 					
-					System.out.println(listOfNodesWithIds.size());
+//					System.out.println(listOfNodesWithIds.size());
 					
 					/*
 					 * Boucler sur la combinason des auteurs
@@ -139,14 +142,19 @@ public class FdlDao extends HibernateDaoSupport{
 								Link article = new Link();
 								System.out.println("Article  : "+title);
 							   item2 = listOfNodesWithIds.get(j).getId();
+	
 							   System.out.println(item + ", " + item2);
-								article.setSource(item);					
+								
+							   	article.setSource(item);					
 								article.setTarget(item2);
 								article.setTitle(title);
 								List list = getHibernateTemplate().find("FROM Link WHERE title = '"+title+"' AND source = '"+(item)+"'"+" AND target = '"+(item2)+"'");
 								if(list.size() == 0 ){
 									getHibernateTemplate().save(article);								
 								}
+								
+								
+								
 						   }
 					}
 
